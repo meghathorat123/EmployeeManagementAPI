@@ -1,0 +1,39 @@
+# Build results
+bin/
+obj/
+
+# Visual Studio files
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Rider
+.idea/
+
+# Logs
+*.log
+
+# NuGet
+*.nupkg
+packages/
+!packages/build/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Coverage
+*.coverage
+*.coveragexml
+
+# Publish output
+publish/
+
+# Azure
+*.azurePubxml
+
+# Resharper
+_ReSharper*/
+*.DotSettings.user
