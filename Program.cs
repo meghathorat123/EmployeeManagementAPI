@@ -31,6 +31,7 @@ app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
+// This will map controllers
 app.MapControllers();
 
 // This will run the app
