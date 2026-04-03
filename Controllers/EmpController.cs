@@ -18,6 +18,12 @@ namespace EmpManagement.Controllers
             _service = service;
         }
 
+         [HttpGet("GetMessage")]
+        public string GetMsg()
+        {
+            return "Welcome";
+        }
+
         [HttpGet("GetAllEmployees")]
         public async Task<IActionResult> GetAllEmployees()
         {
