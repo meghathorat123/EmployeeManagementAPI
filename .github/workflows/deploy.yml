@@ -1,0 +1,46 @@
+name: Build and Deploy .NET API to Azure
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    # 1. Checkout code
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    # 2. Setup .NET
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: '6.0.x' # change if needed
+
+    # 3. Restore dependencies
+    - name: Restore dependencies
+      run: dotnet restore
+
+    # 4. Build project
+    - name: Build
+      run: dotnet build --configuration Release --no-restore
+
+    # 5. Publish project
+    - name: Publish
+      run: dotnet publish -c Release -o publish
+
+    # 6. Azure Login using single JSON secret
+    - name: Azure Login
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+    # 7. Deploy to Azure Web App
+    - name: Deploy to Azure Web App
+      uses: azure/webapps-deploy@v2
+      with:
+        app-name: MyApp # replace with your Azure Web App name
+        package: ./publish
