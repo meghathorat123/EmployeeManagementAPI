@@ -33,5 +33,6 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+// This will run the app
 app.Run();
 
